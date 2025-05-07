@@ -25,6 +25,11 @@
   --text-L: 1.125rem;
   --text-M: 1rem;
   --text-S: 0.875rem;
+
+  /* shadow */
+  --shadow-tabbar-center: 2px 4px 12px rgba(55, 68, 64, 0.12);
+  --shadow-tabbar-side-left: 0px 4px 12px rgba(55, 68, 64, 0.12);
+  --shadow-tabbar-side-right: 4px 0px 12px rgba(55, 68, 64, 0.12);
 }
 
 body {
@@ -32,8 +37,23 @@ body {
   background-color: var(--color-main-50);
   color: var(--color-black);
 
-  max-width: 1024px;
+  max-width: 430px;
   min-height: 100dvh;
   margin: 0 auto;
   border: 1px solid var(--foreground);
+}
+
+button {
+  cursor: pointer;
+}
+
+.tabbar-center {
+  background-color: var(--color-white);
+  width: calc((100% - 214px) / 2);
+}
+
+.absolute-center {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -25%);
 }

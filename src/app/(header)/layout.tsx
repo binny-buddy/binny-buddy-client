@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import TabBarBody from '@/components/TabBar/Body';
+import TabBar from '@/components/TabBar';
 
 export default function HeaderLayout({
   children,
@@ -7,10 +7,10 @@ export default function HeaderLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="px-4">
       <Header />
       <section>{children}</section>
-      <TabBarBody />
+      <TabBar />
     </div>
   );
 }
