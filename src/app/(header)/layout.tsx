@@ -12,9 +12,9 @@ export default async function HeaderLayout({
   const path = (header.get('x-pathname') || '') as PathType;
 
   return (
-    <div className="pt-[72px] px-4 relative">
+    <div className="pt-[72px] relative min-h-dvh pb-[124px]">
       <Header curPath={path} />
-      <section>{children}</section>
+      <section className="px-4">{children}</section>
       <TabBar curPath={path} />
     </div>
   );

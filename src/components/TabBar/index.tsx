@@ -14,7 +14,7 @@ interface Props {
 
 function TabBar({ curPath }: Props) {
   return (
-    <div className="flex w-full h-[106px]">
+    <nav className="flex w-full h-[106px] fixed bottom-0 left-1/2 -translate-x-1/2 max:w-[430px] px-4">
       <LeftSide />
       <button
         onClick={() => (window.location.href = '/')}
@@ -43,7 +43,7 @@ function TabBar({ curPath }: Props) {
         <span>Collection</span>
       </button>
       <RightSide />
-    </div>
+    </nav>
   );
 }
 

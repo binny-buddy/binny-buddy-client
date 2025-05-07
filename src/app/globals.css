@@ -30,6 +30,9 @@
   --shadow-tabbar-center: 2px 4px 12px rgba(55, 68, 64, 0.12);
   --shadow-tabbar-side-left: 0px 4px 12px rgba(55, 68, 64, 0.12);
   --shadow-tabbar-side-right: 4px 0px 12px rgba(55, 68, 64, 0.12);
+  --shadow-card: 2px 4px 12px 0px rgba(55, 68, 64, 0.12);
+
+  --breakpoint-max: 430px;
 }
 
 body {
