@@ -17,13 +17,13 @@ const DUMMY: {
     id: 1,
     name: 'Binny',
     level: 0,
-    type: 'togoCup',
+    type: 'delivery',
   },
   {
     id: 2,
     name: 'Binny',
     level: 1,
-    type: 'togoCup',
+    type: 'bottle',
   },
   {
     id: 3,
