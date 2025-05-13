@@ -1,0 +1,43 @@
+import TogoCupIcon from '@/components/Icon/Recycle/Symbol/to-goCup.svg';
+import DeliveryIcon from '@/components/Icon/Recycle/Symbol/delivery.svg';
+import BottleIcon from '@/components/Icon/Recycle/Symbol/delivery.svg';
+import { CharacterType } from '@/types/character';
+import Image from 'next/image';
+
+interface Props {
+  name: string;
+  level: number;
+  type: CharacterType;
+}
+
+const TYPE_ICON = {
+  togoCup: TogoCupIcon,
+  delivery: DeliveryIcon,
+  bottle: BottleIcon,
+};
+
+function CollectionCard({ name, level, type }: Props) {
+  return (
+    <div className="shadow-card p-5 w-[171px] h-[224px] bg-white hover:bg-main-50 rounded-2xl flex flex-col gap-2 relative cursor-pointer">
+      <div className="w-[128px] h-[128px] relative">
+        <Image
+          src={TYPE_ICON[type]}
+          alt="컵 아이콘"
+          className="absolute top-0 right-0"
+        />
+        모델링
+      </div>
+      <div className="flex flex-col gap-1">
+        <p className="text-M font-bold">{name}</p>
+        <div className="flex gap-1 items-center">
+          <p>{`Lv.${String(level).padStart(2, '0')}`}</p>
+          <div className="relative w-[92px] bg-main-50 h-1">
+            <div className={`absolute h-1 bg-main-400 ${'w-1/2'}`} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CollectionCard;
