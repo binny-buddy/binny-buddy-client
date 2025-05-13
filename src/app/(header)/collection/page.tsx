@@ -79,7 +79,13 @@ function CollectionPage() {
   return (
     <div className="grid grid-cols-2 gap-y-5 justify-items-center">
       {DUMMY.map(({ id, name, level, type }) => (
-        <CollectionCard key={id} name={name} level={level} type={type} />
+        <CollectionCard
+          key={id}
+          id={id}
+          name={name}
+          level={level}
+          type={type}
+        />
       ))}
     </div>
   );

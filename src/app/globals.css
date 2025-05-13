@@ -19,6 +19,13 @@
   --color-white: #fff;
   --color-black: #111;
 
+  --color-togo-100: #ffa9c6;
+  --color-togo-300: #e83178;
+  --color-delivery-100: #fff7a3;
+  --color-delivery-300: #fedc40;
+  --color-bottle-100: #afcbff;
+  --color-bottle-300: #588ae6;
+
   /* text size */
   --text-XXL: 1.5rem;
   --text-XL: 1.25rem;
