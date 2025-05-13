@@ -3,6 +3,7 @@ import { TYPE_ICON } from '@/components/CollectionCard';
 import { CharacterType } from '@/types/character';
 import Image from 'next/image';
 import EditIcon from '@/assets/icons/Icon/pen.svg';
+import Link from 'next/link';
 
 const BINNY: {
   id: number;
@@ -26,13 +27,15 @@ function BinnyPage() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 w-full px-4 py-5 h-[72px] flex items-center justify-center text-XXL">
-        <Image
-          src={BackIcon}
-          alt="뒤로가기"
-          width={32}
-          height={32}
-          className="absolute top-5 left-4"
-        />
+        <Link href={'/collection'}>
+          <Image
+            src={BackIcon}
+            alt="뒤로가기"
+            width={32}
+            height={32}
+            className="absolute top-5 left-4"
+          />
+        </Link>
         Details
       </header>
 
