@@ -63,7 +63,7 @@ function GuidePage() {
         </p>
       </section>
 
-      <section className="bg-white rounded-2xl px-5 py-6 flex flex-col gap-4">
+      <section className="bg-white shadow-card rounded-2xl px-5 py-6 flex flex-col gap-4">
         <p className="text-L">How to recycle?</p>
         <p className="text-gray-600">{data.msg}</p>
       </section>

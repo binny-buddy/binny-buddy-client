@@ -1,5 +1,4 @@
 import { PathType } from '@/types/setting';
-import { headers } from 'next/headers';
 import profileImage from '../../../public/dummy_profile.png';
 import Image from 'next/image';
 

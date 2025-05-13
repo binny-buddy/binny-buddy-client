@@ -1,9 +1,8 @@
-import BackIcon from '@/assets/icons/back.svg';
 import { TYPE_ICON } from '@/components/CollectionCard';
 import { CharacterType } from '@/types/character';
 import Image from 'next/image';
 import EditIcon from '@/assets/icons/Icon/pen.svg';
-import Link from 'next/link';
+import SecondHeader from '@/components/Header/SecondHeader';
 
 const BINNY: {
   id: number;
@@ -26,18 +25,7 @@ const BINNY: {
 function BinnyPage() {
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 w-full px-4 py-5 h-[72px] flex items-center justify-center text-XXL">
-        <Link href={'/collection'}>
-          <Image
-            src={BackIcon}
-            alt="뒤로가기"
-            width={32}
-            height={32}
-            className="absolute top-5 left-4"
-          />
-        </Link>
-        Details
-      </header>
+      <SecondHeader>Details</SecondHeader>
 
       <div className="min-h-dvh pt-24 px-4 h-full flex flex-col justify-between">
         <section className=" mx-auto w-[360px] h-[360px]"></section>
