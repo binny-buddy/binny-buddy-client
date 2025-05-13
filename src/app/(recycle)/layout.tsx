@@ -1,7 +1,7 @@
 import BottomButton from '@/components/Button/BottomButton';
 import SecondHeader from '@/components/Header/SecondHeader';
 
-export default function StepLayout({
+export default function RecycleLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
