@@ -1,3 +1,5 @@
+import BottomButton from '@/components/Button/BottomButton';
+
 export default function StepLayout({
   children,
 }: Readonly<{
@@ -7,6 +9,7 @@ export default function StepLayout({
     <div>
       <header>헤더</header>
       <>{children}</>
+      <BottomButton />
     </div>
   );
 }
