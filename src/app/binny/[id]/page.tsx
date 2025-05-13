@@ -4,7 +4,7 @@ import Image from 'next/image';
 import EditIcon from '@/assets/icons/Icon/pen.svg';
 import SecondHeader from '@/components/Header/SecondHeader';
 
-const BINNY: {
+export const BINNY: {
   id: number;
   name: string;
   level: number;

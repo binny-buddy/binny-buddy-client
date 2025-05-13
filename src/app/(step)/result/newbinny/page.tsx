@@ -1,6 +1,4 @@
-import React from 'react';
-
-function page() {
+function NewBinnyPage() {
   return (
     <div>
       <section className="flex flex-col items-center text-XXL">
@@ -13,4 +11,4 @@ function page() {
   );
 }
 
-export default page;
+export default NewBinnyPage;
