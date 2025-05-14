@@ -13,6 +13,8 @@ const USER = {
   attend: [false, true, false, false, true, false, true],
 };
 
+const WEEK_MSG = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
 export default function Home() {
   return (
     <div className="">
@@ -57,7 +59,7 @@ export default function Home() {
                   : 'text-main-50 border-main-50'
               }`}
             >
-              {idx}
+              {WEEK_MSG[idx]}
             </div>
           ))}
         </div>
