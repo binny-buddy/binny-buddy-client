@@ -3,6 +3,7 @@ import { CharacterType } from '@/types/character';
 import Image from 'next/image';
 import EditIcon from '@/assets/icons/Icon/pen.svg';
 import SecondHeader from '@/components/Header/SecondHeader';
+import BinnyModel from '@/components/Modeling/BinnyModel';
 
 export const BINNY: {
   id: number;
@@ -28,7 +29,9 @@ function BinnyPage() {
       <SecondHeader>Details</SecondHeader>
 
       <div className="min-h-dvh pt-24 px-4 h-full flex flex-col justify-between">
-        <section className=" mx-auto w-[360px] h-[360px]"></section>
+        <section className=" mx-auto w-[360px] h-[360px]">
+          <BinnyModel />
+        </section>
 
         {/* Bottom Sheet */}
         <div className="py-6 px-5 pb-12 flex flex-col gap-10 w-full bg-white rounded-t-2xl shadow-card">

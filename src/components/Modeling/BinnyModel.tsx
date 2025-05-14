@@ -1,6 +1,6 @@
 'use client';
 
-import { Canvas, useThree } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useEffect } from 'react';
 
@@ -16,53 +16,36 @@ const CupModel = () => {
     });
   }, [scene]);
 
-  //Math.PI / 4
   return (
     <primitive
       object={scene}
-      scale={35}
-      position={[0, 0.65, 0]}
-      rotation={[0, Math.PI / 14, 0]}
+      scale={48}
+      position={[0, -1, 0]}
+      rotation={[0, Math.PI / 10, 0]}
       castShadow
     />
   );
 };
 
-const GroundModel = () => {
-  const { scene } = useGLTF('/modeling/ground.glb');
-
-  useEffect(() => {
-    scene.traverse((child: any) => {
-      if (child.isMesh) {
-        child.receiveShadow = true; // 그림자를 받을 수 있도록 설정
-      }
-    });
-  }, [scene]);
-
-  return (
-    <primitive object={scene} scale={1.2} position={[0, 0, 0]} receiveShadow />
-  );
-};
-
-const HomeModel = () => {
+const BinnyModel = () => {
   return (
     <div className="w-full h-[360px]">
       <Canvas
         orthographic
         camera={{
-          position: [3, 2.5, 3.5],
+          position: [3, 2, 3.5],
           fov: 75,
-          left: -3.5,
-          right: 3.5,
-          top: 3.5,
-          bottom: -3.5,
+          left: -2,
+          right: 2,
+          top: 2,
+          bottom: -2,
         }}
         shadows
       >
-        <ambientLight intensity={0.7} />
+        <ambientLight intensity={1} />
         {/* <axesHelper args={[200, 200, 200]} /> */}
         <directionalLight
-          position={[0, 10, 10]}
+          position={[4, 10, 10]}
           intensity={2}
           castShadow
           shadow-mapSize-width={2048} // 그림자 품질 설정
@@ -74,12 +57,22 @@ const HomeModel = () => {
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
+        <mesh
+          rotation={[-Math.PI / 2, 0, 0]} // 바닥을 수평으로 회전
+          position={[0, -1, 0]} // 약간 아래로 이동
+          receiveShadow // 그림자를 받을 수 있도록 설정
+        >
+          <planeGeometry args={[5, 5]} /> {/* 바닥 크기 */}
+          <shadowMaterial
+            transparent={true} // 투명도 활성화
+            opacity={0.5} // 그림자만 보이도록 설정 (0.5는 그림자 투명도)
+          />
+        </mesh>
         <CupModel />
-        <GroundModel />
         <OrbitControls />
       </Canvas>
     </div>
   );
 };
 
-export default HomeModel;
+export default BinnyModel;
