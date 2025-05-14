@@ -2,6 +2,7 @@ import TogoCupIcon from '@/assets/icons/Symbol/to-goCup.svg';
 import DeliveryIcon from '@/assets/icons/Symbol/delivery.svg';
 import BottleIcon from '@/assets/icons/Symbol/bottle.svg';
 import Image from 'next/image';
+import HomeModel from '@/components/Modeling/HomeModel';
 
 const USER = {
   recycle: {
@@ -17,7 +18,7 @@ const WEEK_MSG = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 export default function Home() {
   return (
-    <div className="">
+    <>
       {/* Recycle Count */}
       <div className="mb-3 rounded-2xl px-5 py-6 flex flex-col gap-2 bg-main-400 shadow-card text-white text-L">
         <p>
@@ -66,6 +67,9 @@ export default function Home() {
       </div>
 
       {/* Modeling */}
-    </div>
+      <section className="mt-7 h-[290px]">
+        <HomeModel />
+      </section>
+    </>
   );
 }

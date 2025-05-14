@@ -43,7 +43,6 @@ function CollectionCard({ id, name, level, type }: Props) {
             className="w-full h-full object-center"
             width={128}
             height={128}
-            priority
           />
         </div>
         <div className="flex flex-col gap-1">
