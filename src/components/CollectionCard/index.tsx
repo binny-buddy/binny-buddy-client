@@ -1,6 +1,6 @@
 import TogoCupIcon from '@/assets/icons/Symbol/to-goCup.svg';
 import DeliveryIcon from '@/assets/icons/Symbol/delivery.svg';
-import BottleIcon from '@/assets/icons/Symbol/delivery.svg';
+import BottleIcon from '@/assets/icons/Symbol/bottle.svg';
 import togoBinny from '@/assets/binny/binnybuddycup 1.svg';
 import deliveryBinny from '@/assets/binny/container_ss 1.svg';
 import bottleBinny from '@/assets/binny/pet 1.svg';

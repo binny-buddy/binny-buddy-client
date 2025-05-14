@@ -63,6 +63,21 @@
   --breakpoint-max: 430px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+em,
+a,
+b,
+strong {
+  font-style: normal;
+  font-weight: 400;
+}
+
 body {
   font-family: 'GoogleSansDisplay', Arial, Helvetica, sans-serif;
   background-color: var(--color-main-50);
