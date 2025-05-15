@@ -20,7 +20,7 @@ function Header({ curPath }: Props) {
   };
 
   return (
-    <header className="p-4 flex justify-between text-L absolute top-0 left-0 right-0 h-[72px]">
+    <header className="p-4 flex justify-between text-XXL absolute top-0 left-0 right-0 h-[72px] bg-main-50 z-10">
       <button>
         {curPath === '/collection' ? (
           'Collection'
