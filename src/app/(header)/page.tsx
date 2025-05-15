@@ -11,35 +11,51 @@ const USER = {
     delivery: 0,
     bottle: 7,
   },
-  attend: [false, true, false, false, true, false, true],
+  attend: [true, true, false, false, true, false, true],
 };
 
 const WEEK_MSG = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
-export default function Home() {
+export default async function Home() {
+  const data = await (
+    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
+  ).json();
+
+  let recycleCnt = {
+    total: 0,
+    cup: 0,
+    container: 0,
+    bottle: 0,
+  };
+  recycleCnt.total = data.recent_reward_histories.length;
+
+  data.recent_reward_histories.map(({ detection_result }: any) => {
+    recycleCnt[detection_result.binny_type as 'cup' | 'container' | 'bottle']++;
+  });
+
   return (
     <>
       {/* Recycle Count */}
-      <div className="mb-3 rounded-2xl px-5 py-6 flex flex-col gap-2 bg-main-400 shadow-card text-white text-L">
+      <div className="mt-4 mb-3 rounded-2xl px-5 py-6 flex flex-col gap-2 bg-main-400 shadow-card text-white text-L">
         <p>
           You recycled{' '}
           <span className="font-bold">
-            {String(USER.recycle.total).padStart(2, '0')}
+            {String(recycleCnt.total).padStart(2, '0')}
           </span>{' '}
           times this month!
         </p>
         <div className="flex gap-[10px] justify-end">
           <div className="text-togo-100 flex items-center gap-2">
             <Image src={TogoCupIcon} alt="togo-Cup icon" />
-            <p>{String(USER.recycle.togo).padStart(2, '0')}</p>
+            <p>{String(recycleCnt.cup).padStart(2, '0')}</p>
           </div>
           <div className="text-delivery-100 flex items-center gap-2">
             <Image src={DeliveryIcon} alt="Delivery icon" />
-            <p>{String(USER.recycle.delivery).padStart(2, '0')}</p>
+            <p>{String(recycleCnt.container).padStart(2, '0')}</p>
           </div>
           <div className="text-bottle-100 flex items-center gap-2">
             <Image src={BottleIcon} alt="Bottle icon" />
-            <p>{String(USER.recycle.bottle).padStart(2, '0')}</p>
+            <p>{String(recycleCnt.bottle).padStart(2, '0')}</p>
           </div>
         </div>
       </div>
@@ -47,8 +63,10 @@ export default function Home() {
       {/* Attend */}
       <div className="rounded-2xl px-5 py-6 flex flex-col gap-2 bg-white shadow-card text-L">
         <p>
-          <span className="text-main-800 font-bold">00</span> check-ins this
-          week!
+          <span className="text-main-800 font-bold">
+            {String(recycleCnt.total).padStart(2, '0')}
+          </span>{' '}
+          check-ins this week!
         </p>
         <div className="flex gap-[10px] justify-end">
           {USER.attend.map((isAttend, idx) => (
