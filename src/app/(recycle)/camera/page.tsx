@@ -54,13 +54,7 @@ function CameraPage() {
         `binnybuddy-${data.user.id}-result`,
         JSON.stringify(data)
       );
-      console.log('서버 응답:', data);
-      if (data.is_binny_created) {
-        if (data.is_level_up) {
-          window.location.href = '/result/gain';
-        }
-        window.location.href = '/result/newbinny';
-      } else window.location.href = '/guide';
+      window.location.href = '/guide';
     } catch (err) {
       window.alert('서버 에러! 잠시 후 다시 시도해 주세요.');
     } finally {
