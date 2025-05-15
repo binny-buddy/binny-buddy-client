@@ -2,6 +2,14 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   transpilePackages: ['three'],
+  async rewrites() {
+    return [
+      {
+        source: '/proxy/:path*',
+        destination: 'https://binny-buddy-server.kodori.dev/:path*',
+      },
+    ];
+  },
   /* config options here */
   images: {
     remotePatterns: [

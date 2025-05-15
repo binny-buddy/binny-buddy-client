@@ -12,7 +12,7 @@ function SecondHeader({ children }: Props) {
   const router = useRouter();
 
   return (
-    <header className="fixed top-0 left-1/2 -translate-x-1/2 max:w-[430px] w-full px-4 py-5 h-[72px] flex items-center justify-center text-XXL">
+    <header className="fixed z-10 top-0 left-1/2 -translate-x-1/2 max:w-[430px] w-full px-4 py-5 h-[72px] flex items-center justify-center text-XXL">
       <button onClick={() => router.back()}>
         <Image
           src={BackIcon}

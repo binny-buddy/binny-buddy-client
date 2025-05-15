@@ -18,25 +18,11 @@ const USER = {
 const WEEK_MSG = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 export default async function Home() {
-  const data = await (
-    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
-  ).json();
-
-  const collectionData = await (
-    await fetch(
-      `https://binny-buddy-server.kodori.dev/api-public/v1/collection/${data.collection_id}`
-    )
-  ).json();
-
   let collectionType = {
     cup: false,
     container: false,
     bottle: false,
   };
-
-  for (let binny of collectionData.binny_list) {
-    collectionType[binny.binny_type as BinnyType] = true;
-  }
 
   let recycleCnt = {
     total: 0,
@@ -44,11 +30,31 @@ export default async function Home() {
     container: 0,
     bottle: 0,
   };
-  recycleCnt.total = data.recent_reward_histories.length;
 
-  data.recent_reward_histories.map(({ detection_result }: any) => {
-    recycleCnt[detection_result.binny_type as BinnyType]++;
-  });
+  const data = await (
+    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
+  )
+    .json()
+    .then((data) => {
+      for (let item of data.recent_reward_histories) {
+        if (!item.detection_result) continue;
+        recycleCnt[item.detection_result.binny_type as BinnyType]++;
+        recycleCnt.total++;
+      }
+      return data;
+    });
+
+  const collectionData = await (
+    await fetch(
+      `https://binny-buddy-server.kodori.dev/api-public/v1/collection/${data.collection_id}`
+    )
+  )
+    .json()
+    .then((item) => {
+      for (let binny of item.binny_list) {
+        collectionType[binny.binny_type as BinnyType] = true;
+      }
+    });
 
   return (
     <>

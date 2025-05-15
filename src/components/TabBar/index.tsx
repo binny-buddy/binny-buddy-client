@@ -1,5 +1,6 @@
 'use client';
 
+import SmallLogo from '@/assets/SmallLogo';
 import CollectionIcon from '../Icon/CollectionIcon';
 import HomeIcon from '../Icon/HomeIcon';
 import RecycleIcon from '../Icon/RecycleIcon';
@@ -27,8 +28,11 @@ function TabBar({ curPath }: Props) {
       </button>
 
       <div className="relative">
-        <button className="absolute-center top-0 shadow-tabbar-center w-20 h-20 bg-white rounded-full flex items-center justify-center">
-          <RecycleIcon />
+        <button
+          onClick={() => (window.location.href = '/camera')}
+          className="absolute-center top-0 shadow-tabbar-center w-20 h-20 bg-white rounded-full flex items-center justify-center"
+        >
+          <SmallLogo />
         </button>
         <CenterCircle />
       </div>

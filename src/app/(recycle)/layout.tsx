@@ -15,7 +15,10 @@ export default async function RecycleLayout({
   children: React.ReactNode;
 }>) {
   const header = await headers();
-  const path = (header.get('x-pathname') || '') as '/guide' | '/result';
+  const path = (header.get('x-pathname') || '') as
+    | '/guide'
+    | '/result'
+    | '/camera';
 
   return (
     <div className="pt-[104px] px-4">
@@ -30,7 +33,7 @@ export default async function RecycleLayout({
         />
       </SecondHeader>
       <>{children}</>
-      <BottomButton />
+      {path !== '/camera' && <BottomButton />}
     </div>
   );
 }
