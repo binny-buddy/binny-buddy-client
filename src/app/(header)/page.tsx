@@ -3,6 +3,7 @@ import DeliveryIcon from '@/assets/icons/Symbol/delivery.svg';
 import BottleIcon from '@/assets/icons/Symbol/bottle.svg';
 import Image from 'next/image';
 import HomeModel from '@/components/Modeling/HomeModel';
+import { BinnyType } from '@/types/character';
 
 const USER = {
   recycle: {
@@ -21,6 +22,22 @@ export default async function Home() {
     await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
   ).json();
 
+  const collectionData = await (
+    await fetch(
+      `https://binny-buddy-server.kodori.dev/api-public/v1/collection/${data.collection_id}`
+    )
+  ).json();
+
+  let collectionType = {
+    cup: false,
+    container: false,
+    bottle: false,
+  };
+
+  for (let binny of collectionData.binny_list) {
+    collectionType[binny.binny_type as BinnyType] = true;
+  }
+
   let recycleCnt = {
     total: 0,
     cup: 0,
@@ -30,7 +47,7 @@ export default async function Home() {
   recycleCnt.total = data.recent_reward_histories.length;
 
   data.recent_reward_histories.map(({ detection_result }: any) => {
-    recycleCnt[detection_result.binny_type as 'cup' | 'container' | 'bottle']++;
+    recycleCnt[detection_result.binny_type as BinnyType]++;
   });
 
   return (
@@ -86,7 +103,11 @@ export default async function Home() {
 
       {/* Modeling */}
       <section className="mt-7 h-[290px]">
-        <HomeModel />
+        <HomeModel
+          isCup={collectionType.cup}
+          isContainer={collectionType.container}
+          isBottle={collectionType.bottle}
+        />
       </section>
     </>
   );
