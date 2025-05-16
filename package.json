@@ -10,6 +10,7 @@
     "swagger-typescript-api": "npx swagger-typescript-api generate --path https://binny-buddy-server.kodori.dev/api-public/v1/openapi.json -r -o ./types/models --modular -d --extract-request-body --extract-response-body --extract-response-error --axios"
   },
   "dependencies": {
+    "@pwabuilder/cli": "^0.0.17",
     "@react-three/drei": "^10.0.7",
     "@react-three/fiber": "^9.1.2",
     "@types/three": "^0.176.0",
