@@ -44,13 +44,15 @@ function GuidePage() {
       {data && (
         <>
           <section className="flex flex-col gap-2 items-center">
-            <GuideResultIcon isSuccessed={data.is_binny_created} />
+            <GuideResultIcon isSuccessed={data.detection_result?.is_clean} />
             <p
               className={`text-L font-bold text-center ${
-                data.is_binny_created ? 'text-main-400' : 'text-gray-600'
+                data.detection_result?.is_clean
+                  ? 'text-main-400'
+                  : 'text-gray-600'
               }`}
             >
-              {MSG[data.is_binny_created ? 'success' : 'fail']}
+              {MSG[data.detection_result?.is_clean ? 'success' : 'fail']}
             </p>
           </section>
 

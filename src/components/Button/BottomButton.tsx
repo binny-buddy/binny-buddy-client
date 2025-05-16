@@ -23,7 +23,7 @@ function BottomButton({ path }: Props) {
     if (!data.binny) return;
     if (data.is_level_up)
       window.location.href = `/result/levelup?id=${data.binny?.id}&type=${data.binny?.binny_type}&name=${data.binny?.name}&before=${data.binny?.xp}&earned=${data.earned_xp}&level=${data.binny.level}`;
-    if (data.is_binny_created)
+    else if (data.is_binny_created)
       window.location.href = `/result/newbinny?id=${data.binny?.id}&type=${data.binny?.binny_type}&name=${data.binny?.name}`;
     else
       window.location.href = `/result/gain?id=${data.binny?.id}&type=${data.binny?.binny_type}&name=${data.binny?.name}&before=${data.binny?.xp}&earned=${data.earned_xp}&level=${data.binny.level}`;
