@@ -105,9 +105,9 @@ export default async function Home() {
       {/* Modeling */}
       <section className="mt-7 h-[290px]">
         <HomeModel
-          isCup={true || collectionType.cup}
-          isContainer={true || collectionType.container}
-          isBottle={true || collectionType.bottle}
+          isCup={collectionType.cup}
+          isContainer={collectionType.container}
+          isBottle={collectionType.bottle}
         />
       </section>
     </>
