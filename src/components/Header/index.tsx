@@ -30,7 +30,7 @@ function Header({ curPath }: Props) {
             height={40}
             alt="프로필 이미지"
             className="absolute object-cover w-full h-full object-center"
-            priority
+            unoptimized
           />
         </div>
       </button>
