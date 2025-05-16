@@ -1,7 +1,7 @@
 import BinnyModel from '@/components/Modeling/BinnyModel';
 import { redirect } from 'next/navigation';
 
-async function GainPage({ searchParams }: any) {
+async function LevelUpPage({ searchParams }: any) {
   const { id, type, name, level, earned, before } = await searchParams;
   if (!(id && type && name && level && earned && before)) redirect('/');
 
@@ -9,16 +9,14 @@ async function GainPage({ searchParams }: any) {
     <>
       <section className="flex flex-col gap-6 items-center">
         <div className="text-XXL text-center">
-          <p>⚡️</p>
-          <p className="text-main-800">Nice! XP gained!</p>
+          <p>🎉✨</p>
+          <p className="text-main-800">Level up!</p>
         </div>
         <div>
           <div className="flex gap-5 items-center">
             <p className="text-gray-400">
-              Lv. {String(level).padStart(2, '0')}
-            </p>
-            <p className="text-main-800 text-M">
-              {before} → {Number(before) + Number(earned)}
+              Lv. {String(level - 1).padStart(2, '0')} → Lv.{' '}
+              {String(level).padStart(2, '0')}
             </p>
           </div>
         </div>
@@ -31,17 +29,11 @@ async function GainPage({ searchParams }: any) {
               </span>
             </p>
             <p className="text-gray-400 text-M">
-              {String(Number(before) + Number(earned))} /{' '}
-              {String(2000).padStart(3, '0')}
+              {String(0).padStart(3, '0')} / {String(2000).padStart(3, '0')}
             </p>
           </div>
           <div className="relative w-full bg-main-200 h-2">
-            <div
-              className={`absolute h-2 bg-main-400 `}
-              style={{
-                width: `${((Number(before) + Number(earned)) / 2000) * 100}%`,
-              }}
-            />
+            {/* <div className={`absolute h-2 bg-main-400 ${'w-1/2'}`} /> */}
           </div>
         </div>
       </section>
@@ -58,4 +50,4 @@ async function GainPage({ searchParams }: any) {
   );
 }
 
-export default GainPage;
+export default LevelUpPage;

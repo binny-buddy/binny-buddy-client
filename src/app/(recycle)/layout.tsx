@@ -15,22 +15,28 @@ export default async function RecycleLayout({
   children: React.ReactNode;
 }>) {
   const header = await headers();
-  const path = (header.get('x-pathname') || '') as '/guide' | '/result';
+  const path = (header.get('x-pathname') || '') as
+    | '/guide'
+    | '/result/gain'
+    | '/result/newbinny'
+    | '/camera';
 
   return (
     <div className="pt-[104px] px-4">
       <SecondHeader>
         <RecycleStepBar
           step={
-            RECYCLE_STEP[path.startsWith('/result') ? '/result' : path] as
-              | 'Photo'
-              | 'Guide'
-              | 'Reward'
+            RECYCLE_STEP[
+              (path.startsWith('/result') ? '/result' : path) as
+                | '/camera'
+                | '/guide'
+                | '/result'
+            ] as 'Photo' | 'Guide' | 'Reward'
           }
         />
       </SecondHeader>
       <>{children}</>
-      <BottomButton />
+      {path !== '/camera' && <BottomButton path={path} />}
     </div>
   );
 }

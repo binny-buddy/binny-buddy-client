@@ -1,6 +1,15 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  transpilePackages: ['three'],
+  async rewrites() {
+    return [
+      {
+        source: '/proxy/:path*',
+        destination: 'https://binny-buddy-server.kodori.dev/:path*',
+      },
+    ];
+  },
   /* config options here */
   images: {
     remotePatterns: [
@@ -9,6 +18,9 @@ const nextConfig: NextConfig = {
         hostname: '*', // 이미지 도메인 (예: example.com)
       },
     ],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 

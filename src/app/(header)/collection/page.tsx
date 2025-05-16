@@ -1,90 +1,30 @@
 import CollectionCard from '@/components/CollectionCard';
-import { CharacterType } from '@/types/character';
+import { Binny } from '@/types/character';
 
-const DUMMY: {
-  id: number;
-  name: string;
-  level: number;
-  type: CharacterType;
-}[] = [
-  {
-    id: 0,
-    name: 'Binny',
-    level: 0,
-    type: 'togoCup',
-  },
-  {
-    id: 1,
-    name: 'Binny',
-    level: 0,
-    type: 'delivery',
-  },
-  {
-    id: 2,
-    name: 'Binny',
-    level: 1,
-    type: 'bottle',
-  },
-  {
-    id: 3,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 36,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 35,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 34,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 37,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 33,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 32,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-  {
-    id: 31,
-    name: 'Binny',
-    level: 1,
-    type: 'togoCup',
-  },
-];
+async function CollectionPage() {
+  const user = await (
+    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
+  ).json();
 
-function CollectionPage() {
+  const data = (await (
+    await fetch(
+      `https://binny-buddy-server.kodori.dev/api-public/v1/collection/${user.collection_id}`
+    )
+  ).json()) as {
+    id: number;
+    binny_list: Binny[];
+  };
+
   return (
     <div className="grid grid-cols-2 gap-y-5 justify-items-center">
-      {DUMMY.map(({ id, name, level, type }) => (
+      {data.binny_list.map(({ id, name, level, binny_type, xp }) => (
         <CollectionCard
           key={id}
           id={id}
           name={name}
           level={level}
-          type={type}
+          type={binny_type}
+          xp={xp}
         />
       ))}
     </div>

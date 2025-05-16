@@ -4,7 +4,7 @@ import BottleIcon from '@/assets/icons/Symbol/bottle.svg';
 import togoBinny from '@/assets/binny/binnybuddycup 1.svg';
 import deliveryBinny from '@/assets/binny/container_ss 1.svg';
 import bottleBinny from '@/assets/binny/pet 1.svg';
-import { CharacterType } from '@/types/character';
+import { BinnyType } from '@/types/character';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,22 +12,23 @@ interface Props {
   id: number;
   name: string;
   level: number;
-  type: CharacterType;
+  type: BinnyType;
+  xp: number;
 }
 
 export const TYPE_ICON = {
-  togoCup: TogoCupIcon,
-  delivery: DeliveryIcon,
+  cup: TogoCupIcon,
+  container: DeliveryIcon,
   bottle: BottleIcon,
 };
 
 const TYPE_IMG = {
-  togoCup: togoBinny,
-  delivery: deliveryBinny,
+  cup: togoBinny,
+  container: deliveryBinny,
   bottle: bottleBinny,
 };
 
-function CollectionCard({ id, name, level, type }: Props) {
+function CollectionCard({ id, name, level, type, xp }: Props) {
   return (
     <Link href={`/binny/${id}`}>
       <div className="shadow-card p-5 w-[171px] h-[224px] bg-white hover:bg-main-50 rounded-2xl flex flex-col gap-2 relative cursor-pointer">
@@ -43,7 +44,6 @@ function CollectionCard({ id, name, level, type }: Props) {
             className="w-full h-full object-center"
             width={128}
             height={128}
-            priority
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -51,7 +51,10 @@ function CollectionCard({ id, name, level, type }: Props) {
           <div className="flex gap-1 items-center">
             <p>{`Lv.${String(level).padStart(2, '0')}`}</p>
             <div className="relative w-[92px] bg-main-50 h-1">
-              <div className={`absolute h-1 bg-main-400 ${'w-1/2'}`} />
+              <div
+                style={{ width: `${(xp / 2000) * 100}%` }}
+                className={`absolute h-1 bg-main-400`}
+              />
             </div>
           </div>
         </div>
