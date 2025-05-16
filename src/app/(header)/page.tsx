@@ -9,20 +9,20 @@ import { HomeSchema } from '../../../types/models/data-contracts';
 const WEEK_MSG = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 export default async function Home() {
-  let collectionType = {
+  const collectionType = {
     cup: false,
     container: false,
     bottle: false,
   };
 
-  let recycleCnt = {
+  const recycleCnt = {
     total: 0,
     cup: 0,
     container: 0,
     bottle: 0,
   };
 
-  let weekAttend = [false, false, false, false, false, false, false];
+  const weekAttend = [false, false, false, false, false, false, false];
 
   const data = await (
     await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')

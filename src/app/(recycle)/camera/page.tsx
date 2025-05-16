@@ -8,7 +8,7 @@ import flipIcon from '@/assets/icons/Icon/flip.svg';
 import LoadingIcon from '@/components/Icon/LoadingIcon';
 
 function CameraPage() {
-  const webcamRef = useRef(null);
+  const webcamRef = useRef<Webcam>(null);
   const [facingMode, setFacingMode] = useState('user'); // user | environment
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);

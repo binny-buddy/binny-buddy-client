@@ -1,12 +1,6 @@
 import { PathType } from '@/types/setting';
-import profileImage from '../../../public/dummy_profile.png';
 import Image from 'next/image';
 import logoImg from '@/assets/Logo.svg';
-
-const PAGE_NAME = {
-  '/': 'Binny Buddy',
-  '/collection': 'Collection',
-};
 
 interface Props {
   curPath: PathType;

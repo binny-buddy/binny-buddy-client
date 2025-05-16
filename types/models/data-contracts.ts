@@ -26,6 +26,8 @@ export interface BinnySchema {
   name: string;
   /** Xp */
   xp: number;
+  /** Level */
+  level: number;
   /**
    * Created At
    * @format date-time

@@ -3,7 +3,6 @@
 import SmallLogo from '@/assets/SmallLogo';
 import CollectionIcon from '../Icon/CollectionIcon';
 import HomeIcon from '../Icon/HomeIcon';
-import RecycleIcon from '../Icon/RecycleIcon';
 import CenterCircle from './CenterCircle';
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
