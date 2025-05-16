@@ -1,13 +1,14 @@
 import { TYPE_ICON } from '@/components/CollectionCard';
 import { Binny } from '@/types/character';
 import Image from 'next/image';
-import EditIcon from '@/assets/icons/Icon/pen.svg';
+
 import SecondHeader from '@/components/Header/SecondHeader';
 import BinnyModel from '@/components/Modeling/BinnyModel';
 import {
   BinnySchema,
   HomeSchema,
 } from '../../../../types/models/data-contracts';
+import NameInput from '@/components/Input/NameInput';
 
 const COLOR = {
   border: {
@@ -63,22 +64,11 @@ async function BinnyPage({ params }: any) {
         <div className="py-6 px-5 pb-12 flex flex-col gap-10 w-full bg-white rounded-t-2xl shadow-card">
           {/* Binny Info */}
           <div className="flex flex-col gap-2">
-            <div className="flex gap-4 items-center justify-center">
-              <Image src={TYPE_ICON[data.binny_type]} alt="recycle type icon" />
-              <label className="flex gap-2 relative h-6">
-                <input
-                  defaultValue={data.name}
-                  className="text-XXL font-bold w-auto border-b-2 border-transparent focus:border-b-black focus:outline-none"
-                />
-                <Image
-                  src={EditIcon}
-                  alt="edit icon"
-                  width={24}
-                  height={24}
-                  className="absolute right-0 cursor-pointer"
-                />
-              </label>
-            </div>
+            <NameInput
+              defaultValue={data.name}
+              binnyType={data.binny_type}
+              binnyId={data.id}
+            />
             <div className="flex justify-between items-center">
               <p className="text-XL">
                 Lv.{' '}

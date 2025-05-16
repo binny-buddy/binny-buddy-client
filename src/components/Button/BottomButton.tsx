@@ -30,6 +30,8 @@ function BottomButton({ path }: Props) {
     if (path === '/guide' && data.detection_result?.is_clean) clickReward();
     if (path === '/guide' && !data.detection_result?.is_clean)
       window.location.href = '/camera';
+    if (path.startsWith('/result'))
+      window.location.href = `/binny/${data.binny?.id}`;
   };
 
   const returnBtnText = () => {

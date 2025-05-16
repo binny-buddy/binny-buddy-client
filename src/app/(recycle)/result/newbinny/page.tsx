@@ -1,8 +1,5 @@
-import { TYPE_ICON } from '@/components/CollectionCard';
 import BinnyModel from '@/components/Modeling/BinnyModel';
-import Image from 'next/image';
-import EditIcon from '@/assets/icons/Icon/pen.svg';
-import { BinnyType } from '@/types/character';
+import NameInput from '@/components/Input/NameInput';
 
 async function NewBinnyPage({ searchParams }: any) {
   const { id, type, name } = await searchParams;
@@ -18,22 +15,7 @@ async function NewBinnyPage({ searchParams }: any) {
         <BinnyModel type={type} />
       </section>
 
-      <div className="flex gap-4 items-center justify-center">
-        <Image src={TYPE_ICON[type as BinnyType]} alt="recycle type icon" />
-        <label className="flex gap-2 relative h-6">
-          <input
-            defaultValue={name}
-            className="text-XXL font-bold w-auto border-b-2 border-transparent focus:border-b-black focus:outline-none"
-          />
-          <Image
-            src={EditIcon}
-            alt="edit icon"
-            width={24}
-            height={24}
-            className="absolute right-0 cursor-pointer"
-          />
-        </label>
-      </div>
+      <NameInput binnyId={id} binnyType={type} defaultValue={name} />
       <p className="text-center mt-6 break-words mx-auto">
         Binny is a cheerful little recycling bin who loves helping kids learn
         how to sort waste the right way! 🌱🗑️
