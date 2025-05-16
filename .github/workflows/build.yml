@@ -37,7 +37,7 @@ jobs:
           tags: |
             ${{ steps.meta.outputs.tags }}
             ${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           context: .
           file: Dockerfile
 
