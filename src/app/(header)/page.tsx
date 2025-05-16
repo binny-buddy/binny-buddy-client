@@ -4,18 +4,9 @@ import BottleIcon from '@/assets/icons/Symbol/bottle.svg';
 import Image from 'next/image';
 import HomeModel from '@/components/Modeling/HomeModel';
 import { BinnyType } from '@/types/character';
+import { HomeSchema } from '../../../types/models/data-contracts';
 
-const USER = {
-  recycle: {
-    total: 19,
-    togo: 12,
-    delivery: 0,
-    bottle: 7,
-  },
-  attend: [true, true, false, false, true, false, true],
-};
-
-const WEEK_MSG = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const WEEK_MSG = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 export default async function Home() {
   let collectionType = {
@@ -31,13 +22,17 @@ export default async function Home() {
     bottle: 0,
   };
 
+  let weekAttend = [false, false, false, false, false, false, false];
+
   const data = await (
     await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
   )
     .json()
-    .then((data) => {
+    .then((data: HomeSchema) => {
       for (let item of data.recent_reward_histories) {
+        const day = new Date(item.created_at);
         if (!item.detection_result) continue;
+        weekAttend[day.getDay()] = true;
         recycleCnt[item.detection_result.binny_type as BinnyType]++;
         recycleCnt.total++;
       }
@@ -92,7 +87,7 @@ export default async function Home() {
           check-ins this week!
         </p>
         <div className="flex gap-[10px] justify-end">
-          {USER.attend.map((isAttend, idx) => (
+          {weekAttend.map((isAttend, idx) => (
             <div
               key={idx}
               className={`w-7 h-7 border-2 rounded-full flex justify-center items-center ${

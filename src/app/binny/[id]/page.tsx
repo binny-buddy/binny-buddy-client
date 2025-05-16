@@ -1,13 +1,9 @@
 import { TYPE_ICON } from '@/components/CollectionCard';
-import { Binny } from '@/types/character';
 import Image from 'next/image';
 
 import SecondHeader from '@/components/Header/SecondHeader';
 import BinnyModel from '@/components/Modeling/BinnyModel';
-import {
-  BinnySchema,
-  HomeSchema,
-} from '../../../../types/models/data-contracts';
+import { BinnySchema } from '../../../../types/models/data-contracts';
 import NameInput from '@/components/Input/NameInput';
 
 const COLOR = {
