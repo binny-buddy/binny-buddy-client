@@ -36,6 +36,8 @@ export interface BinnySchema {
    * @format date-time
    */
   updated_at: string;
+  /** Reward Count */
+  reward_count: number;
 }
 
 /** BinnyUserSchema */
@@ -92,6 +94,8 @@ export interface RewardHistorySchema {
    * @format date-time
    */
   updated_at: string;
+  /** Is Level Up */
+  is_level_up: boolean | null;
 }
 
 /** FileSchema */

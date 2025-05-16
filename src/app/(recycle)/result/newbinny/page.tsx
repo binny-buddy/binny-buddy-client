@@ -1,8 +1,10 @@
 import BinnyModel from '@/components/Modeling/BinnyModel';
 import NameInput from '@/components/Input/NameInput';
+import { redirect } from 'next/navigation';
 
 async function NewBinnyPage({ searchParams }: any) {
   const { id, type, name } = await searchParams;
+  if (!(id && type && name)) redirect('/');
 
   return (
     <div>
