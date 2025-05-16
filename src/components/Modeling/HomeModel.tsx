@@ -8,9 +8,9 @@ interface BinnyModelType {
   position: number[];
 }
 const POSITION = [
-  [0, 2.15, 0],
-  [-1, 2.15, 1],
-  [1, 2.15, -1],
+  [0, 0.65, 0],
+  [-1, 0.65, 1],
+  [1, 0.65, -1],
 ];
 
 const CupModel = ({ position }: BinnyModelType) => {
@@ -96,12 +96,7 @@ const GroundModel = () => {
   }, [scene]);
 
   return (
-    <primitive
-      object={scene}
-      scale={1.2}
-      position={[0, 1.5, 0]}
-      receiveShadow
-    />
+    <primitive object={scene} scale={1.2} position={[0, 0, 0]} receiveShadow />
   );
 };
 
