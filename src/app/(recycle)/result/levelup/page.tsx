@@ -30,7 +30,7 @@ async function LevelUpPage({ searchParams }: any) {
               </span>
             </p>
             <p className="text-gray-400 text-M">
-              {String(Number(before) + Number(earned)).padStart(3, '0')} /{' '}
+              {String(Number(before)).padStart(3, '0')} /{' '}
               {String(LEVEL_MAX[level]).padStart(3, '0')}
             </p>
           </div>
@@ -38,9 +38,7 @@ async function LevelUpPage({ searchParams }: any) {
             <div
               className={`absolute h-2 bg-main-400 `}
               style={{
-                width: `${
-                  ((Number(before) + Number(earned)) / LEVEL_MAX[level]) * 100
-                }%`,
+                width: `${(Number(before) / LEVEL_MAX[level]) * 100}%`,
               }}
             />
           </div>
