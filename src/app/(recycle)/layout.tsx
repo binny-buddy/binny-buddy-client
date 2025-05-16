@@ -17,7 +17,8 @@ export default async function RecycleLayout({
   const header = await headers();
   const path = (header.get('x-pathname') || '') as
     | '/guide'
-    | '/result'
+    | '/result/gain'
+    | '/result/newbinny'
     | '/camera';
 
   return (
@@ -25,15 +26,17 @@ export default async function RecycleLayout({
       <SecondHeader>
         <RecycleStepBar
           step={
-            RECYCLE_STEP[path.startsWith('/result') ? '/result' : path] as
-              | 'Photo'
-              | 'Guide'
-              | 'Reward'
+            RECYCLE_STEP[
+              (path.startsWith('/result') ? '/result' : path) as
+                | '/camera'
+                | '/guide'
+                | '/result'
+            ] as 'Photo' | 'Guide' | 'Reward'
           }
         />
       </SecondHeader>
       <>{children}</>
-      {path !== '/camera' && <BottomButton />}
+      {path !== '/camera' && <BottomButton path={path} />}
     </div>
   );
 }

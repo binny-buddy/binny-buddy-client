@@ -39,6 +39,7 @@ export class ApiPublic<
       path: `/api-public/v1/home`,
       method: "GET",
       secure: true,
+      format: "json",
       ...params,
     });
   /**
@@ -60,6 +61,7 @@ export class ApiPublic<
       body: data,
       secure: true,
       type: ContentType.FormData,
+      format: "json",
       ...params,
     });
   /**
@@ -79,6 +81,7 @@ export class ApiPublic<
       path: `/api-public/v1/reward-history/${rewardHistoryId}`,
       method: "GET",
       secure: true,
+      format: "json",
       ...params,
     });
   /**
@@ -95,6 +98,7 @@ export class ApiPublic<
       path: `/api-public/v1/file/${fileId}`,
       method: "GET",
       secure: true,
+      format: "json",
       ...params,
     });
   /**
@@ -114,6 +118,7 @@ export class ApiPublic<
       path: `/api-public/v1/collection/${collectionId}`,
       method: "GET",
       secure: true,
+      format: "json",
       ...params,
     });
   /**
@@ -133,6 +138,7 @@ export class ApiPublic<
       path: `/api-public/v1/binny/${binnyId}`,
       method: "GET",
       secure: true,
+      format: "json",
       ...params,
     });
   /**
@@ -157,6 +163,7 @@ export class ApiPublic<
       method: "PATCH",
       query: query,
       secure: true,
+      format: "json",
       ...params,
     });
 }

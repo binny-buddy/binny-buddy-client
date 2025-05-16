@@ -4,6 +4,10 @@ import Image from 'next/image';
 import EditIcon from '@/assets/icons/Icon/pen.svg';
 import SecondHeader from '@/components/Header/SecondHeader';
 import BinnyModel from '@/components/Modeling/BinnyModel';
+import {
+  BinnySchema,
+  HomeSchema,
+} from '../../../../types/models/data-contracts';
 
 const COLOR = {
   border: {
@@ -25,6 +29,26 @@ async function BinnyPage({ params }: any) {
       `https://binny-buddy-server.kodori.dev/api-public/v1/binny/${id}`
     )
   ).json()) as Binny;
+
+  let recycleCnt = {
+    total: 0,
+    cup: 0,
+    container: 0,
+    bottle: 0,
+  };
+
+  const userData = await (
+    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
+  )
+    .json()
+    .then((data: HomeSchema) => {
+      for (let item of data.recent_reward_histories) {
+        if (!item.detection_result) continue;
+        recycleCnt[item.detection_result.binny_type]++;
+        recycleCnt.total++;
+      }
+      return data;
+    });
 
   return (
     <>
@@ -93,7 +117,7 @@ async function BinnyPage({ params }: any) {
               <Image src={TYPE_ICON[data.binny_type]} alt="recycle type icon" />
               Recycled{' '}
               <span className="font-bold">
-                {String(data.recycle_num ?? 0).padStart(2, '0')}
+                {String(recycleCnt[data.binny_type] ?? 0).padStart(2, '0')}
               </span>{' '}
               times
             </p>
