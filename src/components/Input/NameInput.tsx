@@ -39,7 +39,7 @@ function NameInput({ defaultValue, binnyType, binnyId }: Props) {
     (timeoutRef.current as any) = setTimeout(() => {
       // 실제 수정 API 호출 함수
       updateAPI();
-    }, 2000);
+    }, 1500);
 
     // cleanup
     return () => {

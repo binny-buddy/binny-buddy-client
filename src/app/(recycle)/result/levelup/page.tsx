@@ -1,3 +1,4 @@
+import { LEVEL_MAX } from '@/const/level';
 import BinnyModel from '@/components/Modeling/BinnyModel';
 import { redirect } from 'next/navigation';
 
@@ -29,11 +30,19 @@ async function LevelUpPage({ searchParams }: any) {
               </span>
             </p>
             <p className="text-gray-400 text-M">
-              {String(0).padStart(3, '0')} / {String(2000).padStart(3, '0')}
+              {String(Number(before) + Number(earned)).padStart(3, '0')} /{' '}
+              {String(LEVEL_MAX[level]).padStart(3, '0')}
             </p>
           </div>
           <div className="relative w-full bg-main-200 h-2">
-            {/* <div className={`absolute h-2 bg-main-400 ${'w-1/2'}`} /> */}
+            <div
+              className={`absolute h-2 bg-main-400 `}
+              style={{
+                width: `${
+                  ((Number(before) + Number(earned)) / LEVEL_MAX[level]) * 100
+                }%`,
+              }}
+            />
           </div>
         </div>
       </section>

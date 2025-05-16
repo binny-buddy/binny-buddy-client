@@ -5,6 +5,7 @@ import SecondHeader from '@/components/Header/SecondHeader';
 import BinnyModel from '@/components/Modeling/BinnyModel';
 import { BinnySchema } from '../../../../types/models/data-contracts';
 import NameInput from '@/components/Input/NameInput';
+import { LEVEL_MAX } from '@/const/level';
 
 const COLOR = {
   border: {
@@ -53,13 +54,13 @@ async function BinnyPage({ params }: any) {
                 </span>
               </p>
               <p className="text-gray-400">
-                {String(data.xp)} / {String(2000)}
+                {String(data.xp)} / {String(LEVEL_MAX[data.level])}
               </p>
             </div>
             <div className="relative bg-main-50 h-2">
               <div
                 className={`absolute h-2 bg-main-400 `}
-                style={{ width: `${(data.xp / 2000) * 100}%` }}
+                style={{ width: `${(data.xp / LEVEL_MAX[data.level]) * 100}%` }}
               />
             </div>
           </div>

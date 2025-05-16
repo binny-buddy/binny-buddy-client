@@ -9,7 +9,7 @@ import LoadingIcon from '@/components/Icon/LoadingIcon';
 
 function CameraPage() {
   const webcamRef = useRef<Webcam>(null);
-  const [facingMode, setFacingMode] = useState('user'); // user | environment
+  const [facingMode, setFacingMode] = useState('environment'); // user | environment
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,9 +54,11 @@ function CameraPage() {
         `binnybuddy-${data.user.id}-result`,
         JSON.stringify(data)
       );
-      window.location.href = '/guide';
+      if (!data.detection_result) {
+        alert('Failed to detect recyclable materials. Please try again.');
+      } else window.location.href = '/guide';
     } catch (err) {
-      window.alert('서버 에러! 잠시 후 다시 시도해 주세요.');
+      window.alert('Server Error! 잠시 후 다시 시도해 주세요.');
     } finally {
       setIsLoading(false);
     }
