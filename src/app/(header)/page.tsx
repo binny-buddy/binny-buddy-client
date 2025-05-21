@@ -5,6 +5,7 @@ import Image from 'next/image';
 import HomeModel from '@/components/Modeling/HomeModel';
 import { BinnyType } from '@/types/character';
 import { HomeSchema } from '../../../types/models/data-contracts';
+import { API_BASE_URL } from '@/lib/config';
 
 const WEEK_MSG = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -25,7 +26,7 @@ export default async function Home() {
   const weekAttend = [false, false, false, false, false, false, false];
 
   const data = await (
-    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
+    await fetch(`${API_BASE_URL}/api-public/v1/home`)
   )
     .json()
     .then((data: HomeSchema) => {
@@ -41,7 +42,7 @@ export default async function Home() {
 
   const collectionData = await (
     await fetch(
-      `https://binny-buddy-server.kodori.dev/api-public/v1/collection/${data.collection_id}`
+      `${API_BASE_URL}/api-public/v1/collection/${data.collection_id}`
     )
   )
     .json()

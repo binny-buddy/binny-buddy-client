@@ -1,14 +1,15 @@
 import CollectionCard from '@/components/CollectionCard';
+import { API_BASE_URL } from '@/lib/config';
 import { Binny } from '@/types/character';
 
 async function CollectionPage() {
   const user = await (
-    await fetch('https://binny-buddy-server.kodori.dev/api-public/v1/home')
+    await fetch(`${API_BASE_URL}/api-public/v1/home`)
   ).json();
 
   const data = (await (
     await fetch(
-      `https://binny-buddy-server.kodori.dev/api-public/v1/collection/${user.collection_id}`
+      `${API_BASE_URL}/api-public/v1/collection/${user.collection_id}`
     )
   ).json()) as {
     id: number;

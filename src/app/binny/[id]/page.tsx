@@ -6,6 +6,7 @@ import BinnyModel from '@/components/Modeling/BinnyModel';
 import { BinnySchema } from '../../../../types/models/data-contracts';
 import NameInput from '@/components/Input/NameInput';
 import { LEVEL_MAX } from '@/const/level';
+import { API_BASE_URL } from '@/lib/config';
 
 const COLOR = {
   border: {
@@ -24,7 +25,7 @@ async function BinnyPage({ params }: any) {
   const { id } = await params;
   const data = (await (
     await fetch(
-      `https://binny-buddy-server.kodori.dev/api-public/v1/binny/${id}`
+      `${API_BASE_URL}/api-public/v1/binny/${id}`
     )
   ).json()) as BinnySchema;
 

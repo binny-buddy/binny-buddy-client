@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "swagger-typescript-api": "npx swagger-typescript-api generate --path https://binny-buddy-server.kodori.dev/api-public/v1/openapi.json -r -o ./types/models --modular -d --extract-request-body --extract-response-body --extract-response-error --axios"
+    "swagger-typescript-api": "npx swagger-typescript-api generate --path https://binny-buddy.cspc.me/api-public/v1/openapi.json -r -o ./types/models --modular -d --extract-request-body --extract-response-body --extract-response-error --axios"
   },
   "dependencies": {
     "@pwabuilder/cli": "^0.0.17",

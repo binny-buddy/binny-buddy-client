@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/proxy/:path*',
-        destination: 'https://binny-buddy-server.kodori.dev/:path*',
+        destination: 'https://binny-buddy.cspc.me/:path*',
       },
     ];
   },
